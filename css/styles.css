@@ -1,0 +1,160 @@
+/* 1. IMPORTACIÓN DE FUENTES */
+@font-face {
+  font-family: 'Abraham';
+  src: url('../assets/fonts/jetBrainsMono/JetBrainsMono-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Moises';
+  src: url('../assets/fonts/raleway/Raleway-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mesias';
+  src: url('../assets/fonts/dancingScript/DancingScript-VariableFont_wght.ttf') format('truetype');
+}
+
+/* 2. VARIABLES GLOBALES (:root) */
+:root {
+
+  /* Color base fundamental (Fondo y Elementos) */
+  --neumo-bg: #82b1a5;
+  /* Sombras para el efecto relieve */
+/* Sombras ajustadas para el nuevo fondo verde */
+  --neumo-shadow-dark: rgba(60, 85, 78, 0.8);
+  /* Un verde más oscuro para la profundidad */
+  --neumo-shadow-light: rgba(255, 255, 255, 0.3);
+  /* Luz más sutil para que no parezca plástico brillante */
+ 
+
+  /* Colores de acento (para el verde Mint) */
+  --accent-color: #114627;
+    --text-color: #2c3e50;
+
+  /* Tus fuentes */
+  --font-titles: 'Moises', sans-serif;
+  --font-code: 'Abraham', monospace;
+}
+
+/* ... Tus fuentes y variables se mantienen igual ... */
+
+body {
+  /* Eliminamos bisque para que las sombras funcionen */
+  margin: 0;
+  padding: 0;
+  background-color: var(--neumo-bg);
+}
+
+/* El contenedor principal */
+.calculator {
+  background-color: var(--neumo-bg);
+  width: 320px;
+  padding: 2rem;
+  border-radius: 30px;
+  /* El secreto: una sombra oscura abajo-derecha y una luz arriba-izquierda */
+  box-shadow: 9px 9px 16px var(--neumo-shadow-dark),
+    -9px -9px 16px var(--neumo-shadow-light);
+}
+
+/* La pantalla de resultados (Efecto hundido/Inset) */
+.calculator__display {
+  width: 100%;
+  height: 60px;
+  background-color: var(--neumo-bg);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  /* Sombras internas para que parezca hundido */
+  box-shadow: inset 6px 6px 12px var(--neumo-shadow-dark),
+    inset -6px -6px 12px var(--neumo-shadow-light);
+
+  /* Estilo de texto */
+  font-family: var(--font-code);
+  color: var(--accent-color);
+  text-align: right;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Los botones (Efecto relieve) */
+.calculator__button {
+  width: 60px;
+  height: 60px;
+  background-color: var(--neumo-bg);
+  border-radius: 50%;
+  /* Botones circulares */
+  border: none;
+  color: var(--text-color);
+  font-family: var(--font-titles);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  box-shadow: 6px 6px 12px var(--neumo-shadow-dark),
+    -6px -6px 12px var(--neumo-shadow-light);
+}
+
+/* Efecto al presionar: El botón se "hunde" */
+.calculator__button:active {
+  box-shadow: inset 4px 4px 8px var(--neumo-shadow-dark),
+    inset -4px -4px 8px var(--neumo-shadow-light);
+  transform: scale(0.98);
+}
+/* Ajuste para centrar todo en tu pantalla */
+/* Aplicamos el centrado al contenedor principal */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--neumo-bg);
+  /* Cambiamos bisque por el color neumo para que funcione el efecto */
+}
+/* Modificador BEM para el botón de "Igual =" que suele ser distinto */
+/* MODIFICADOR: Este es el que hará visibles tus signos */
+.calculator__button--operator {
+  /* Usamos el color coral/rosado para máximo contraste sobre el verde oscuro */
+  color: rgb(229, 132, 132) !important;
+  font-size: 1.8rem;
+  /* Aumentamos el tamaño del signo */
+  font-weight: bold;
+}
+.calculator__button--clear {
+  color: #e74c3c !important;
+  /* Un rojo suave o el coral que elegiste */
+  font-weight: bold;
+}
+
+/* El botón igual también necesita resaltar */
+/* MODIFICADOR: Botón igual */
+.calculator__button--equal {
+  background-color: var(--accent-color);
+  /* El verde Mint */
+  color: white !important;
+  font-size: 1.8rem;
+}
+/* La rejilla de botones */
+.calculator__keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+
+
+/* Estilos para las secciones de texto */
+.header-info,
+.info-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: var(--font-titles);
+}
+
+.footer {
+  margin-top: 2rem;
+  font-family: var(--font-signature);
+  /* Aquí usamos Dancing Script */
+  font-size: 1.5rem;
+  
+}
