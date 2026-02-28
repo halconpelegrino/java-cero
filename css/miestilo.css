@@ -1,0 +1,127 @@
+@font-face {
+  font-family: 'Abraham';
+  src: url('../assets/fonts/jetBrainsMono/JetBrainsMono-MediumItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Moises';
+  src: url('../assets/fonts/raleway/Raleway-ExtraLightItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Mesias';
+  src: url('../assets/fonts/dancingScript/DancingScript-VariableFont_wght.ttf') format('truetype');
+}
+
+/* Variables de color basadas en tu proyectos **/
+:root {
+  --bg-color: #82b1a5;
+  --text-color: #2c3e50;
+  --accent-coral: rgb(229, 132, 132);
+  /* Sombras Neuromórficas  **/
+  --shadow-dark: 8px 8px 16px #6f978d;
+  --shadow-light: -8px -8px 16px #95cbbe;
+  --shadow-inset: inset 5px 5px 10px #6f978d, inset -5px -5px 10px #95cbbe;
+}
+body {
+  background-color: var(--bg-color);
+  font-family: 'Abraham', sans-serif; /* usando tus fuentes de assets **/
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: whitesmoke;
+}
+body, p {
+  font-family: 'Moises', sans-serif;
+  line-height: 1.6;
+}
+/* 3. Datos técnicos, Reloj y Botones ( Estilo Programador ) **/
+#fecha-hora, .nav-clima, .badge, h2 {
+  font-family: 'Abraham', monospace;
+  letter-spacing: 1px;
+}
+.title {
+  font-family: 'Mesias',cursive;
+  font-size: 4rem;color: whitesmoke;
+}
+
+.header {
+  text-align: center;
+  margin-top: 50px;
+}
+.container {
+  display: flex;
+  gap: 40px;
+  padding: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* La Tarjeta Neuromórfica  Estilo Behance **/
+.card {
+  width: 280px;
+  padding: 30px;
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: var(--bg-color);
+  border-radius: 40px;
+  box-shadow:  var(--shadow-dark);
+  transition: all 0.3s;
+  text-align: center;
+}
+.card:hover {
+  box-shadow: var(--shadow-inset);
+  transform: scale(0.98);
+}
+.icon-container {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+.badge {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+.badge.coral {
+  background-color: var(--accent-coral);
+}
+.navbar {
+  width: 90%;
+  margin: 20px auto;
+  padding: 15px 30px;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  box-shadow: var(--shadow-dark), var(--shadow-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 20px;
+  z-index: 1000;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-weight: 600;
+  padding: 8px 15px;
+  transition: 0.3s;
+}
+.nav-menu a:hover {
+  box-shadow: var(--shadow-inset);  /* Efecto de hundido al pasar el ratón  **/
+}
+.nav-info, .nav-clima {
+  font-size: o.9rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

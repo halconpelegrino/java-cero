@@ -1,61 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Víctor Manuel | Rata Audaz | Proyectos Java & Web</title>
+    <link rel="stylesheet" href="css/miestilo.css" />
+  </head>
+  <body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Calculadora Neumórfica - Víctor Manuel</title>
-</head>
+    <nav class="navbar">
+      <div class="nav-info"><span id="reloj-icon"></span>🕒<span id="fecha-hora"> Cargando...</span>
+      </div>
+<ul class="nav-menu">
+  <li class="item">
+    <a href="#">Inicio</a>
+  </li>
+  <li class="item">
+    <a href="calculadora/index.html">Calculadora</a>
+    </li>
+  <li class="item">
+    <a href="conversor/index.html">Conversor</a>
+    </li>
+</ul>
+<div class="nav-clima" id="clima-container">
+  <span id="clima-icon">☁️</span>
+  <span id="clima-temp">--ºC</span>
+</div>
 
-<body class="main-container">
+    </nav>
 
-    <header class="header-info">
-        <h1 class="calculator-showcase__title">Proyecto: Calculadora en Java</h1>
-        <p class="calculator-showcase__status--active">Sistema Operativo: Linux Mint - Estado: Activo</p>
+    <header class="header">
+      <h1 class="title">Rata Audaz</h1>
+      <p class="subtitle">Eco sistema de Aplicaciones: Java a Web</p>
     </header>
 
-    <main class="calculator">
-        <div class="calculator__display" id="display">0</div>
-
-        <div class="calculator__keypad">
-            <button class="calculator__button">7</button>
-            <button class="calculator__button">8</button>
-            <button class="calculator__button">9</button>
-            <button class="calculator__button calculator__button--operator">÷</button>
-
-            <button class="calculator__button">4</button>
-            <button class="calculator__button">5</button>
-            <button class="calculator__button">6</button>
-            <button class="calculator__button calculator__button--operator">×</button>
-
-            <button class="calculator__button">1</button>
-            <button class="calculator__button">2</button>
-            <button class="calculator__button">3</button>
-            <button class="calculator__button calculator__button--operator">-</button>
-
-            <button class="calculator__button">0</button>
-            <button class="calculator__button">.</button>
-            <button class="calculator__button calculator__button--clear">C</button>
-            <button class="calculator__button calculator__button--equal">=</button>
-            <button class="calculator__button calculator__button--operator">+</button>
-        </div>
+    <main class="container">
+      <a href="calculadora/index.html" class="card">
+        <div class="icon-container"></div>
+        <h2>Calculadora</h2>
+        <p>
+          Lógica pura en java migrada a una a una interfaz neumórfica funcional
+        </p>
+        <span class="badge">Completado</span>
+      </a>
+      <a href="" class="card">
+        <div class="icon-container"></div>
+        <h2>Conversor</h2>
+        <p>Próximo reto: Estructura de control para conversión de unidades</p>
+        <span class="badge coral">En progreso</span>
+      </a>
     </main>
-
-    <section class="info-section">
-        <h2>¿Qué hace mi calculadora?</h2>
-        <ul class="calculator-showcase__code-sample">
-            <li>Suma, resta y multiplica con precisión.</li>
-            <li>Seguridad (If) para no dividir por cero.</li>
-            <li>Bucle (While) para ejecución continua en terminal.</li>
-        </ul>
-    </section>
-
     <footer class="footer">
-        <p>Creado por Víctor Manuel - 2026</p>
+      <p>Desarrollado en Linux Mint | 2026</p>
     </footer>
+
     <script src="js/main.js"></script>
-
-</body>
-
+  </body>
 </html>
