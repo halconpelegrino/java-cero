@@ -1,17 +1,17 @@
 /* 1. IMPORTACIÓN DE FUENTES */
 @font-face {
   font-family: 'Abraham';
-  src: url('../assets/fonts/jetBrainsMono/JetBrainsMono-MediumItalic.ttf') format('truetype');
+  src: url('../../assets/fonts/jetBrainsMono/JetBrainsMono-MediumItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Moises';
-  src: url('../assets/fonts/raleway/Raleway-SemiBoldItalic.ttf') format('truetype');
+  src: url('../../assets/fonts/raleway/Raleway-SemiBoldItalic.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Mesias';
-  src: url('../assets/fonts/dancingScript/DancingScript-VariableFont_wght.ttf') format('truetype');
+  src: url('../../assets/fonts/dancingScript/DancingScript-VariableFont_wght.ttf') format('truetype');
 }
 
 /* 2. VARIABLES GLOBALES (:root) */
