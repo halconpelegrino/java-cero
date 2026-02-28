@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/miestilo.css">
+  <title>Conversor | Rata Audaz</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="../index.html" class="nav-back"> ⬅️ Volver al Portal </a>
+    <div class="nav-info">
+      🌡️ Conversor de Temperatura
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="card card-conversor">
+      <h2>Conversor Termodinámico</h2>
+
+      <div class="input-group">
+        <input type="number" id="valorInput" placeholder="Introduce el valor...">
+      </div>
+
+      <div class="button-group">
+        <button id="btnCelsius" class="badge">Celsius a °F</button>
+        <button id="btnFahrenheit" class="badge coral">Fahrenheit a °C</button>
+      </div>
+
+      <div id="resultadoWeb" class="resultado-display">--</div>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
