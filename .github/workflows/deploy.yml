@@ -1,4 +1,4 @@
-name: Deploy Rata Audaz
+name: Deploy Rata Audaz Final
 on:
   push:
     branches: [ main ]
