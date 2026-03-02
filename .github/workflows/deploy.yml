@@ -11,12 +11,12 @@ jobs:
 
       - name: Crear config.js
         run: |
-          echo "const CONFIG = {
-            WEATHER_API_KEY: '${{ secrets.WEATHER_API_KEY }}',
-            CITY: '${{ secrets.CITY }}',
-            UNITS: 'metric',
-            LANG: 'es'
-          };" > config.js
+          echo "const CONFIG = {" > config.js
+          echo "  WEATHER_API_KEY: '${{ secrets.WEATHER_API_KEY }}'," >> config.js
+          echo "  CITY: '${{ secrets.CITY }}'," >> config.js
+          echo "  UNITS: 'metric'," >> config.js
+          echo "  LANG: 'es'" >> config.js
+          echo "};" >> config.js  
 
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
