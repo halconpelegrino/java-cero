@@ -25,7 +25,7 @@ jobs:
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .        # La raíz del proyecto
+          folder: .
           branch: gh-pages
-          target-folder: . # Forzamos que lo ponga en la raíz de la web
-          clean: false
+          clean: true      # CAMBIAMOS A TRUE: Borra lo viejo y pon lo nuevo
+          single-commit: true # Crea un historial limpio para que la caché no se confunda
