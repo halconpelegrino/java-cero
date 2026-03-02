@@ -21,5 +21,6 @@ jobs:
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
-          branch: gh-pages
+          folder: .        # Sube todo lo que hay en la carpeta raíz
+          branch: gh-pages # A la rama gh-pages
+          clean: false     # ¡IMPORTANTE! No borres lo que el robot creó antes
