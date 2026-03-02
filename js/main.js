@@ -1,48 +1,74 @@
+/**
+ * RATA AUDAZ - Lógica Principal
+ * Desarrollado por: Víctor Manuel
+ * Sistema: Linux Mint 2026
+ */
 
-// 1. Reloj en tiempo real
+// --- 1. RELOJ EN TIEMPO REAL ---
 function actualizarReloj() {
   const now = new Date();
   const opciones = {
-    weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
   };
-  document.getElementById('fecha-hora').textContent = now.toLocaleDateString('es-ES', opciones);
-}
-setInterval(actualizarReloj, 1000);
-// 2. Simulación de Clima (Próximo paso: Conectar a API Real)
-async function obtenerClima() {
-  // Nota para Víctor: Aquí usaremos una API Key de OpenWeatherMap más adelante
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${CONFIG.CITY}&appid=${CONFIG.WEATHER_API_KEY}&units=${CONFIG.UNITS}&lang=${CONFIG.LANG}`;
 
-  console.log("Conectando con OpenWeather...");
+  const relojElemento = document.getElementById("fecha-hora");
+  if (relojElemento) {
+    relojElemento.textContent = now.toLocaleDateString("es-ES", opciones);
+  }
+}
+
+setInterval(actualizarReloj, 1000);
+
+// --- 2. LÓGICA DE CLIMA (CONEXIÓN API REAL) ---
+async function obtenerClima() {
+  // Verificamos si CONFIG existe (inyectado por el Robot de GitHub)
+  if (typeof CONFIG === "undefined") {
+    console.warn("Rata Audaz: Esperando configuración...");
+    return;
+  }
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${CONFIG.CITY}&appid=${CONFIG.WEATHER_API_KEY}&units=${CONFIG.UNITS}&lang=${CONFIG.LANG}`;
 
   try {
     const respuesta = await fetch(url);
     const datos = await respuesta.json();
 
     if (respuesta.ok) {
-      // 1. Extraemos y redondeamos la temperatura
       const tempReal = Math.round(datos.main.temp);
-
-      const iconoCodigo = datos.weather[0].icon; // Ej: "01d" (sol), "04n" (nubes)
-      // 2.  Construimos la URL del icono oficial de OpenWeather ej: "cielo despejado")
+      const iconoCodigo = datos.weather[0].icon;
       const iconoUrl = `https://openweathermap.org/img/wn/${iconoCodigo}@2x.png`;
 
-      // 3. ¡INYECTAMOS EN EL HTML!
-      // Buscamos el elemento por su ID y le cambiamos el texto
-      document.getElementById("clima-temp").textContent = `${tempReal}ºC`;
-      // Cambiamos el icono (sustituimos el emoji por una imagen real)
+      const tempElemento = document.getElementById("clima-temp");
       const iconoElemento = document.getElementById("clima-icon");
-      iconoElemento.innerHTML = `<img src="${iconoUrl}" alt="Clima" style="width: 30px; vertical-align: middle;">`;
+
+      if (tempElemento) {
+        tempElemento.textContent = `${tempReal}ºC`;
+      }
+
+      if (iconoElemento) {
+        // CORRECCIÓN AQUÍ: Inyección limpia del icono
+        iconoElemento.innerHTML = `<img src="${iconoUrl}" alt="Clima" style="width: 30px; vertical-align: middle;">`;
+      }
 
       console.log("¡Clima actualizado con éxito!");
-    } else {
-      console.error("Error en la respuesta de la API:", datos.message);
     }
   } catch (error) {
-    console.error("Error de conexión:", error);
-    document.getElementById("clima-temp").textContent = "Error";
+    console.error("Error Rata Audaz:", error);
+    if (document.getElementById("clima-temp")) {
+      document.getElementById("clima-temp").textContent = "Offline";
+    }
   }
 }
 
-obtenerClima();
-  
+// --- 3. ARRANQUE AL CARGAR LA PÁGINA ---
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarReloj();
+  obtenerClima();
+  // Actualiza el clima cada 15 minutos automáticamente
+  setInterval(obtenerClima, 900000);
+});
