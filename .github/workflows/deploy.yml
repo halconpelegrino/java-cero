@@ -9,18 +9,21 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Crear config.js
+      # 1. Creamos la plantilla vacía
+      - name: Crear plantilla config.js
         run: |
-          echo "const CONFIG = {" > config.js
-          echo "  WEATHER_API_KEY: '${{ secrets.WEATHER_API_KEY }}'," >> config.js
-          echo "  CITY: '${{ secrets.CITY }}'," >> config.js
-          echo "  UNITS: 'metric'," >> config.js
-          echo "  LANG: 'es'" >> config.js
-          echo "};" >> config.js  
+          echo "const CONFIG = { WEATHER_API_KEY: 'REPLACE_ME_API', CITY: 'REPLACE_ME_CITY', UNITS: 'metric', LANG: 'es' };" > config.js
 
+      # 2. Rellenamos con tus Secrets de GitHub
+      - name: Rellenar config.js con los Secrets
+        run: |
+          sed -i "s/REPLACE_ME_API/${{ secrets.WEATHER_API_KEY }}/g" config.js
+          sed -i "s/REPLACE_ME_CITY/${{ secrets.CITY }}/g" config.js
+
+      # 3. Enviamos todo a la web
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .        # Sube todo lo que hay en la carpeta raíz
-          branch: gh-pages # A la rama gh-pages
-          clean: false     # ¡IMPORTANTE! No borres lo que el robot creó antes
+          folder: .
+          branch: gh-pages
+          clean: false
