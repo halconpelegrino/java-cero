@@ -9,18 +9,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # 1. Creamos la plantilla vacía
+      # 1. Creamos la plantilla exacta
       - name: Crear plantilla config.js
         run: |
           echo "const CONFIG = { WEATHER_API_KEY: 'REPLACE_ME_API', CITY: 'REPLACE_ME_CITY', UNITS: 'metric', LANG: 'es' };" > config.js
 
-      # 2. Rellenamos con tus Secrets de GitHub
+      # 2. Rellenamos buscando las etiquetas de texto
       - name: Rellenar config.js con los Secrets
         run: |
           sed -i "s/REPLACE_ME_API/${{ secrets.WEATHER_API_KEY }}/g" config.js
           sed -i "s/REPLACE_ME_CITY/${{ secrets.CITY }}/g" config.js
 
-      # 3. Enviamos todo a la web
+      # 3. Enviamos todo a la rama de internet (gh-pages)
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
