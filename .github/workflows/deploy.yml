@@ -6,6 +6,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # <--- ESTO ES VITAL: Permiso para escribir archivos
     steps:
       - uses: actions/checkout@v3
 
@@ -20,12 +22,11 @@ jobs:
           sed -i "s/REPLACE_ME_API/${{ secrets.WEATHER_API_KEY }}/g" config.js
           sed -i "s/REPLACE_ME_CITY/${{ secrets.CITY }}/g" config.js
 
-      # 3. Enviamos todo a la rama de internet (gh-pages)
       # 3. Enviamos todo a la web
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .
           branch: gh-pages
-          clean: true      # CAMBIAMOS A TRUE: Borra lo viejo y pon lo nuevo
-          single-commit: true # Crea un historial limpio para que la caché no se confunda
+          clean: true
+          single-commit: true
