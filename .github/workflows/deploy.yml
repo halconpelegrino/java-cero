@@ -21,9 +21,11 @@ jobs:
           sed -i "s/REPLACE_ME_CITY/${{ secrets.CITY }}/g" config.js
 
       # 3. Enviamos todo a la rama de internet (gh-pages)
+      # 3. Enviamos todo a la web
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
+          folder: .        # La raíz del proyecto
           branch: gh-pages
+          target-folder: . # Forzamos que lo ponga en la raíz de la web
           clean: false
