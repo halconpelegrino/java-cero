@@ -21,11 +21,13 @@ jobs:
             CITY: '${{ secrets.CITY }}', 
             UNITS: 'metric', 
             LANG: 'es' 
-          };" > ./config.js
+          };" > config.js
+          chmod 644 config.js
 
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .        # Sube TODO lo que hay en la raíz
+          folder: .        
           branch: gh-pages
           clean: true
+          single-commit: true
