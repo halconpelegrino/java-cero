@@ -14,24 +14,18 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
 
-      # 1. El Detective: Nos dirá qué archivos hay en el servidor
-      - name: Listar archivos para el Detective Víctor
-        run: ls -R
-
-      # 2. Creamos la llave maestra
-      - name: Crear config.js real
+      - name: Crear config.js en la raíz
         run: |
           echo "const CONFIG = { 
             WEATHER_API_KEY: '${{ secrets.WEATHER_API_KEY }}', 
             CITY: '${{ secrets.CITY }}', 
             UNITS: 'metric', 
             LANG: 'es' 
-          };" > config.js
+          };" > ./config.js
 
-      # 3. Enviamos a la web
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
+          folder: .        # Sube TODO lo que hay en la raíz
           branch: gh-pages
           clean: true
