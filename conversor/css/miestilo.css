@@ -1,0 +1,68 @@
+/* 1. IMPORTACIÓN DE FUENTES */
+@font-face {
+  font-family: 'Abraham';
+  src: url('../../assets/fonts/jetBrainsMono/JetBrainsMono-MediumItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Moises';
+  src: url('../../assets/fonts/raleway/Raleway-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mesias';
+  src: url('../../assets/fonts/dancingScript/DancingScript-VariableFont_wght.ttf') format('truetype');
+}
+
+
+/* 1. VARIABLES (Particulares de este proyecto) */
+:root {
+  --bg-color: #2c3e50;
+  /* Azul Oscuro */
+  --text-color: whitesmoke;
+  --accent-coral: #e58484;
+  --shadow-dark: 10px 10px 20px #1a252f;
+  --shadow-light: -10px -10px 20px #3e5771;
+  --shadow-inset: inset 6px 6px 12px #1a252f, inset -6px -6px 12px #3e5771;
+}
+
+/* 2. DISEÑO DE LA TARJETA (Copiado de la lógica de tu calculadora) */
+.card-conversor {
+  background: var(--bg-color);
+  padding: 2rem;
+  border-radius: 30px;
+  box-shadow: var(--shadow-dark), var(--shadow-light);
+  width: 400px;
+  text-align: center;
+}
+
+/* 3. INPUTS NEUMÓRFICOS (Particularidad del Conversor) */
+#valorInput {
+  background: var(--bg-color);
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-inset);
+  color: white;
+  font-family: 'Abraham', monospace;
+  width: 90%;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+/* 4. BOTONES (Heredando el estilo .badge) */
+.badge {
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: none;
+  background: var(--bg-color);
+  box-shadow: var(--shadow-dark), var(--shadow-light);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.badge:active {
+  box-shadow: var(--shadow-inset);
+  transform: scale(0.98);
+}
