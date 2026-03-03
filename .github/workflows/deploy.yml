@@ -14,7 +14,11 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
 
-      # ESTO ES LO IMPORTANTE: Creamos el archivo DIRECTAMENTE con los secretos
+      # 1. El Detective: Nos dirá qué archivos hay en el servidor
+      - name: Listar archivos para el Detective Víctor
+        run: ls -R
+
+      # 2. Creamos la llave maestra
       - name: Crear config.js real
         run: |
           echo "const CONFIG = { 
@@ -24,9 +28,10 @@ jobs:
             LANG: 'es' 
           };" > config.js
 
+      # 3. Enviamos a la web
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .        # Sube todo el contenido de la raíz
-          branch: gh-pages # A la rama de la web
+          folder: .
+          branch: gh-pages
           clean: true
