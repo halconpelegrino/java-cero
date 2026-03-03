@@ -1,32 +1,32 @@
 name: Deploy Rata Audaz Final
+
 on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # <--- ESTO ES VITAL: Permiso para escribir archivos
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout código
+        uses: actions/checkout@v4
 
-      # 1. Creamos la plantilla exacta
-      - name: Crear plantilla config.js
+      # ESTO ES LO IMPORTANTE: Creamos el archivo DIRECTAMENTE con los secretos
+      - name: Crear config.js real
         run: |
-          echo "const CONFIG = { WEATHER_API_KEY: 'REPLACE_ME_API', CITY: 'REPLACE_ME_CITY', UNITS: 'metric', LANG: 'es' };" > config.js
+          echo "const CONFIG = { 
+            WEATHER_API_KEY: '${{ secrets.WEATHER_API_KEY }}', 
+            CITY: '${{ secrets.CITY }}', 
+            UNITS: 'metric', 
+            LANG: 'es' 
+          };" > config.js
 
-      # 2. Rellenamos buscando las etiquetas de texto
-      - name: Rellenar config.js con los Secrets
-        run: |
-          sed -i "s/REPLACE_ME_API/${{ secrets.WEATHER_API_KEY }}/g" config.js
-          sed -i "s/REPLACE_ME_CITY/${{ secrets.CITY }}/g" config.js
-
-      # 3. Enviamos todo a la web
       - name: Deploy a GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
-          branch: gh-pages
+          folder: .        # Sube todo el contenido de la raíz
+          branch: gh-pages # A la rama de la web
           clean: true
-          single-commit: true
