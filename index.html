@@ -1,63 +1,71 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Víctor Manuel | Rata Audaz | Proyectos Java & Web</title>
-    <link rel="stylesheet" href="css/miestilo.css" />
-  </head>
-  <body>
 
-    <nav class="navbar">
-      <div class="nav-info"><span id="reloj-icon"></span>🕒<span id="fecha-hora"> Cargando...</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Víctor Manuel | Rata Audaz | Ecosistema</title>
+  <link rel="stylesheet" href="css/miestilo.css" />
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="nav-info">
+      🕒 <span id="fecha-hora">Cargando...</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="item"><a href="#">Inicio</a></li>
+      <li class="item"><a href="calculadora/index.html">Calculadora</a></li>
+      <li class="item"><a href="conversor/index.html">Conversor</a></li>
+    </ul>
+    <div class="nav-clima">
+      <span id="nav-clima-icon"></span>
+      <span id="nav-clima-temp">--ºC</span>
+    </div>
+  </nav>
+
+  <header class="header">
+    <h1 class="title">Rata Audaz</h1>
+    <p class="subtitle">Eco sistema de Aplicaciones: Java a Web</p>
+  </header>
+
+  <main class="container">
+    <a href="calculadora/index.html" class="card">
+      <div class="icon-container"></div>
+      <h2>Calculadora</h2>
+      <p>Lógica pura en Java migrada a una interfaz funcional.</p>
+      <span class="badge">Completado</span>
+    </a>
+
+    <div class="card clima-card-full">
+      <div class="clima-header">
+        <h2>Montevideo, UY</h2>
+        <span id="clima-desc">Actualizando...</span>
       </div>
-<ul class="nav-menu">
-  <li class="item">
-    <a href="#">Inicio</a>
-  </li>
-  <li class="item">
-    <a href="calculadora/index.html">Calculadora</a>
-    </li>
-  <li class="item">
-    <a href="conversor/index.html">Conversor</a>
-    </li>
-</ul>
-<div class="nav-clima" id="clima-container">
-  <span id="clima-icon">☁️</span>
-  <span id="clima-temp">--ºC</span>
-</div>
+      <div class="clima-body">
+        <div id="clima-icon">☁️</div>
+        <div id="clima-temp">--ºC</div>
+      </div>
+      <div class="clima-footer">
+        <div class="clima-data">💧 Humedad <b id="clima-hum">--%</b></div>
+        <div class="clima-data">🌬️ Viento <b id="clima-viento">-- km/h</b></div>
+      </div>
+    </div>
 
-    </nav>
+    <a href="conversor/index.html" class="card">
+      <div class="icon-container"></div>
+      <h2>Conversor</h2>
+      <p>Próximo reto: Estructura de control para conversión de unidades.</p>
+      <span class="badge coral">En progreso</span>
+    </a>
+  </main>
 
-    <header class="header">
-      <h1 class="title">Rata Audaz</h1>
-      <p class="subtitle">Eco sistema de Aplicaciones: Java a Web</p>
-    </header>
+  <footer class="footer">
+    <p>Desarrollado en Linux Mint | 2026</p>
+  </footer>
 
-    <main class="container">
-      <a href="calculadora/index.html" class="card">
-        <div class="icon-container"></div>
-        <h2>Calculadora</h2>
-        <p>
-          Lógica pura en java migrada a una a una interfaz neumórfica funcional
-        </p>
-        <span class="badge">Completado</span>
-      </a>
-      <a href="" class="card">
-        <div class="icon-container"></div>
-        <h2>Conversor</h2>
-        <p>Próximo reto: Estructura de control para conversión de unidades</p>
-        <span class="badge coral">En progreso</span>
-      </a>
-    </main>
-    <footer class="footer">
-      <p>Desarrollado en Linux Mint | 2026</p>
-    </footer>
+  <script type="module" src="js/main.js"></script>
+</body>
 
-    <script src="config.js"></script>
-    <script src="js/main.js"></script>
-    
-  </body>
 </html>
-
-

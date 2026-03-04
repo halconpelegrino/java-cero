@@ -50,10 +50,10 @@ body, p {
 }
 .container {
   display: flex;
-  gap: 40px;
-  padding: 50px;
-  flex-wrap: wrap;
-  justify-content: center;
+    gap: 40px;
+    padding: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* La Tarjeta Neuromórfica  Estilo Behance **/
