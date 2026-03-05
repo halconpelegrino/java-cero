@@ -49,7 +49,10 @@ function manejarNumero(num) {
     valorActual = num;
     esperandoSegundoOperando = false;
   } else {
-    valorActual = valorActual === "0" ? num : valorActual + num;
+    // Si el usuario presiona "." y ya hay uno no hacemos nada
+    if (num === "." && valorActual.includes(".")) return;
+
+    valorActual = valorActual === "0" && num !== "." ? num: valorActual + num;
   }
 }
 
